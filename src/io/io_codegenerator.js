@@ -104,7 +104,10 @@ IO.CodeGenerator = new (function() {
 			contained_behaviors.push(states[i]);
 		}
 		for (var i=0; i<contained_behaviors.length; ++i) {
-			code += ws+ws+"self.add_behavior(" + contained_behaviors[i].getStateClass() + ", '" + contained_behaviors[i].getStatePath().substr(1) + "')\n";
+			var class_key = (!UI.Settings.isExplicitStates() && WS.Statelib.isClassUnique(contained_behaviors[i].getStateClass()))?
+				contained_behaviors[i].getStateClass() :
+				contained_behaviors[i].getStatePackage() + "__" + contained_behaviors[i].getStateClass();
+			code += ws+ws+"self.add_behavior(" + class_key + ", '" + contained_behaviors[i].getStatePath().substr(1) + "')\n";
 		}
 		code += "\n";
 		// manual
@@ -305,7 +308,10 @@ IO.CodeGenerator = new (function() {
 				}
 				defkeys_str = ", default_keys=[" + be_defkeys_str.join(',') + "]";
 			}
-			code += ws+ws+ws+ws+ws+ws+ws+ws+ws+ws+"self.use_behavior(" + s.getStateClass() + ", '" + s.getStatePath().substr(1) + "'" + defkeys_str + "),\n";
+			var class_key = (!UI.Settings.isExplicitStates() && WS.Statelib.isClassUnique(s.getStateClass()))?
+				s.getStateClass() :
+				s.getStatePackage() + "__" + s.getStateClass();
+			code += ws+ws+ws+ws+ws+ws+ws+ws+ws+ws+"self.use_behavior(" + class_key + ", '" + s.getStatePath().substr(1) + "'" + defkeys_str + "),\n";
 
 		} else {
 			var class_key = (!UI.Settings.isExplicitStates() && WS.Statelib.isClassUnique(s.getStateClass()))?

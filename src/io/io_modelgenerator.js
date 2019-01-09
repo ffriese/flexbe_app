@@ -80,6 +80,14 @@ IO.ModelGenerator = new (function() {
 			if (s_def.state_type == "container") {
 				s = that.buildStateMachine(s_def.state_name, s_def.state_class, sm_defs, sm_states, silent);
 			} else if (s_def.state_type == "behavior") {
+				if (s_def.state_class.includes("__")) {
+					var type_split = s_def.state_class.split("__");
+					var state_key = type_split[0] + "." + type_split[1];
+					var state_def = WS.Statelib.getFromLib(state_key);
+					if (state_def == undefined) {
+						s_def.state_class = type_split[1];
+					}
+				} 
 				var state_def = WS.Behaviorlib.getByClass(s_def.state_class);
 				if (state_def == undefined) {
 					T.logError("Unable to find behavior definition for: " + s_def.state_class);
