@@ -127,7 +127,7 @@ Drawable.State = function(state_obj, target_paper, readonly, mode, active, locke
 	if (locked) state_box
 		.attr({fill: '120-#eb6:0-#fd9:80', 'stroke-width': 2});
 	else if (active) state_box
-		.attr({fill: '120-#cde:0-#def:80', 'stroke-width': 2});
+		.attr({fill: '120-#0f0:0-#0f0:80', 'stroke-width': 2});
 	else state_box
 		.attr({fill: '120-#eeb:0-#ffc:80'});
 	if (!readonly) state_box
