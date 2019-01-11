@@ -861,7 +861,7 @@ UI.RuntimeControl = new (function() {
 	}
 
 	this.displayBehaviorFeedback = function(level, text) {
-		var color = "black";
+		var color = "white";
 		var collapse = UI.Settings.isCollapseInfo();
 		switch(level) {
 			case 1:
@@ -877,7 +877,7 @@ UI.RuntimeControl = new (function() {
 				collapse = UI.Settings.isCollapseError();
 				break;
 			case 4:
-				color = "green";
+				color = "#4bff1c";
 				collapse = false;
 				break;
 		}
