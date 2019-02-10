@@ -145,14 +145,8 @@ UI.Panels.StateProperties = new (function() {
 				var td_input = document.createElement("td");
 				var input_field = document.createElement("textarea");
 				input_field.setAttribute("class", "inline_text_edit_area");
-				//input_field.setAttribute("type", "text");
-				//input_field.setAttribute("value", values[i]);
-				// input_field.setAttribute("resize", "none");
-				// input_field.setAttribute("overflow", "scroll");
-				// input_field.setAttribute("min-width", "180px");
-				// input_field.setAttribute("max-width", "180px");
-				// input_field.setAttribute("width", "180px");
 				input_field.innerText = values[i];
+				input_field.value = values[i];
 				input_field.setAttribute("title", VarSolver.resolveAsList(values[i]).join(", "));
 
 				td_input.appendChild(input_field);
@@ -756,11 +750,8 @@ UI.Panels.StateProperties = new (function() {
 		// save parameters (after everything else to avoid troubles with generation)
 		var parameter_input = document.getElementById("panel_prop_parameters_content").getElementsByTagName("textarea");
 		var new_parameter_values = [];
-		T.logWarn('TRYING TO SAVE');
 		for (var i=0; i<parameter_input.length; ++i) {
-			//new_parameter_values.push(parameter_input[i].value);
-			new_parameter_values.push(parameter_input[i].innerText);
-			T.logWarn('' + parameter_input[i].innerHTML);
+			new_parameter_values.push(parameter_input[i].value);
 		}
 		current_prop_state.setParameterValues(new_parameter_values);
 
