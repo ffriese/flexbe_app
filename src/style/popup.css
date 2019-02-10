@@ -64,6 +64,19 @@
 	margin: 0px 18px 0px 0px;
 	width: 100%;
 }
+
+.inline_text_edit_area {
+	font-family: monospace;
+	font-size: 9pt;
+	resize: vertical;
+	overflow: auto;
+	border: 1px solid rgba(0, 0, 0, 0);
+	border-bottom: 1px dotted rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0);
+	padding: 2px;
+	margin: 0px 18px 0px 0px;
+	width: 100%;
+}
 .inline_text_edit:hover, .inline_text_edit:focus {
 	border-bottom: 1px dotted rgba(0, 0, 0, 0);
 	background-color: rgba(200, 200, 200, 0.1);
